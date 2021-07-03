@@ -213,17 +213,23 @@ class App {
     _renderWorkout(workout) {
         let html = `
                 <li class="workout workout--${workout.type}" data-id="${workout.id}">
-                  <h2 class="workout__title">${workout.description}</h2>
-                  <div class="workout__details">
-                    <span class="workout__icon">${workout.type === 'running'? '🏃' : '🚴‍'}</span>
-                    <span class="workout__value">${workout.distance}</span>
-                    <span class="workout__unit">km</span>
-                  </div>
-                  <div class="workout__details">
-                    <span class="workout__icon">⏱</span>
-                    <span class="workout__value">${workout.duration}</span>
-                    <span class="workout__unit">min</span>
-                  </div>
+                <div class="workout__title">
+                  <h2>${workout.description}</h2>
+                  <div>
+                    <span class="workout__edit">Edit</span>
+                    <button title="Delete" onclick="_deleteWorkout()" class="workout__delete">&#128473</button>
+                  </div>              
+                </div>     
+                <div class="workout__details">
+                  <span title="Running" class="workout__icon">${workout.type === 'running'? '🏃' : '🚴‍'}</span>
+                  <span title="Distance" class="workout__value">${workout.distance}</span>
+                  <span title="Distance" class="workout__unit">km</span>
+                </div>
+                <div title="Duration" class="workout__details">
+                  <span class="workout__icon">⏱</span>
+                  <span class="workout__value">${workout.duration}</span>
+                  <span class="workout__unit">min</span>
+                </div>
             `;
 
         if(workout.type === 'running')
@@ -274,6 +280,11 @@ class App {
 
         //workout.click();
     }
+
+    /*_deleteWorkout() {
+        let delWorkout = document.querySelector('workout__delete');
+        delWorkout.parentElement.parentElement.parentElement.removeChild(delWorkout);
+    }*/
 
     _setLocalStorage() {
         localStorage.setItem('workouts', JSON.stringify(this.#workouts));

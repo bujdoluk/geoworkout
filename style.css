@@ -85,14 +85,23 @@ a:visited {
 }
 
 .workout__title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    grid-column: 1 / -1;
     font-size: 1.7rem;
     font-weight: 600;
-    grid-column: 1 / -1;
 }
 
 .workout__details {
     display: flex;
     align-items: baseline;
+}
+
+.workout__details:hover {
+    transform: scale(1.2);
+    transition: ease-in-out 0.25s;
 }
 
 .workout__icon {
@@ -111,6 +120,22 @@ a:visited {
     color: var(--color-light--1);
     text-transform: uppercase;
     font-weight: 800;
+}
+
+.workout__delete {
+    color: lightcoral;
+}
+
+.workout__delete:hover {
+    color: red;
+}
+
+.workout__edit {
+    color: lightgreen;
+}
+
+.workout__edit:hover {
+    color: greenyellow;
 }
 
 .form {
